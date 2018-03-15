@@ -1,0 +1,10 @@
+{
+  "name": "improtekniikat",
+  "version": "1.0.0",
+  "description": "Root level",
+  "scripts": {
+    "build": "cd client && npm run build"
+  },
+  "author": "",
+  "license": "ISC"
+}
