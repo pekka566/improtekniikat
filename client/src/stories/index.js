@@ -7,6 +7,8 @@ import Footer from '../components/Footer';
 import ExerciseFilter from '../components/ExerciseFilter';
 import ExerciseList from '../components/ExerciseList';
 import { testdata } from '../components/Testdata';
+import ExcercisesContainer from '../containers/ExcercisesContainer.js';
+import ExercisesStore from '../stores/ExercisesStore';
 
 storiesOf('App', module).add('app', () => <App />);
 storiesOf('Header', module).add('header', () => <Header />);
@@ -21,3 +23,6 @@ storiesOf('ExerciseList', module).add('exerciseList', () => (
   <ExerciseList exercises={testdata} />
 ));
 storiesOf('Footer', module).add('footer', () => <Footer />);
+storiesOf('ExcercisesContainer', module).add('excercisesContainer', () => (
+  <ExcercisesContainer store={new ExercisesStore()} />
+));
