@@ -24,5 +24,5 @@ storiesOf('ExerciseList', module).add('exerciseList', () => (
 ));
 storiesOf('Footer', module).add('footer', () => <Footer />);
 storiesOf('ExcercisesContainer', module).add('excercisesContainer', () => (
-  <ExcercisesContainer store={new ExercisesStore()} />
+  <ExcercisesContainer store={ExercisesStore} />
 ));
