@@ -1,9 +1,17 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import {
+  Grid,
+  Row,
+  Col,
+  ButtonToolbar,
+  ButtonGroup,
+  Button
+} from 'react-bootstrap';
 import Header from './Header';
 import ExerciseFilter from './ExerciseFilter';
 import ExerciseList from './ExerciseList';
 import { testdata } from './Testdata';
+import history from '../history';
 
 const rowMarginStyle = {
   marginTop: '2em'
@@ -25,6 +33,15 @@ class App extends React.Component {
     this.state = { exercises: testdata, filteredExercises: testdata };
     this.selectCategory = this.selectCategory.bind(this);
     this.clearSelectedCategory = this.clearSelectedCategory.bind(this);
+    this.handleAddNew = this.handleAddNew.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+  }
+
+  handleAddNew() {
+    history.push('/addnewexercise');
   }
 
   selectCategory(index, category) {
@@ -44,12 +61,21 @@ class App extends React.Component {
   }
 
   render() {
+    const { isAuthenticated } = this.props.auth;
     return (
       <div>
-        <Header />
+        <Header auth={this.props.auth} />
         <Grid>
           <Row className="show-grid">
-            <Col xs={6} md={9} />
+            <Col xs={6} md={9}>
+              {isAuthenticated() && (
+                <ButtonToolbar>
+                  <ButtonGroup>
+                    <Button onClick={this.handleAddNew}>Lisää tekniikka</Button>
+                  </ButtonGroup>
+                </ButtonToolbar>
+              )}
+            </Col>
             <Col xs={6} md={3}>
               <ExerciseFilter
                 categories={getCategories(testdata)}
